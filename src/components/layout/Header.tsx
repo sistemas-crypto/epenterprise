@@ -20,7 +20,11 @@ import { UserRole, Currency } from '../../types/hr';
 import { EPLogo } from '../common/EPLogo';
 import { ChangeAvatarModal } from '../common/ChangeAvatarModal';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  toggleSidebar: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   const {
     currentRole,
     setCurrentRole,
@@ -78,6 +82,15 @@ export const Header: React.FC = () => {
     <header className="sticky top-0 z-30 flex items-center justify-between h-16 px-6 bg-white border-b border-slate-200">
       {/* Zone 1: Official EP ENTERPRISE Logo & Company Context */}
       <div className="flex items-center gap-4">
+        <button
+          onClick={toggleSidebar}
+          className="md:hidden p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg"
+          aria-label="Abrir menú"
+        >
+          <div className="w-5 h-0.5 bg-slate-600 mb-1.5 rounded"></div>
+          <div className="w-5 h-0.5 bg-slate-600 mb-1.5 rounded"></div>
+          <div className="w-5 h-0.5 bg-slate-600 rounded"></div>
+        </button>
         <div className="flex items-center gap-3">
           <EPLogo size="sm" showSubtitle={true} />
           

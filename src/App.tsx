@@ -77,7 +77,7 @@ const MainLayout: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-teal-500 selection:text-white">
       {/* Top Header */}
-      <Header />
+      <Header toggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)} />
 
       <div className="flex flex-1 overflow-hidden">
         {/* Navigation Sidebar */}
