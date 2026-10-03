@@ -986,20 +986,28 @@ export const AdminPanel: React.FC = () => {
                 </div>
               </div>
 
-              {/* Temporary password preview */}
               <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
                 <div>
                   <span className="text-[11px] font-bold text-slate-600">Contraseña Provisional de Acceso:</span>
-                  <p className="font-mono text-xs font-bold text-emerald-800">{formTempPassword}</p>
+                  <div className="flex items-center gap-2">
+                    <input 
+                      type="password" 
+                      value={formTempPassword} 
+                      readOnly 
+                      className="font-mono text-xs font-bold text-emerald-800 bg-transparent border-none p-0 w-24"
+                    />
+                  </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setFormTempPassword(`EP-${Math.floor(1000 + Math.random() * 9000)}!`)}
-                  className="px-2.5 py-1 text-[11px] font-semibold text-slate-600 bg-white border border-slate-200 rounded hover:bg-slate-100 flex items-center gap-1"
-                >
-                  <RefreshCw className="w-3 h-3" />
-                  Regenerar
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setFormTempPassword(`EP-${Math.floor(1000 + Math.random() * 9000)}!`)}
+                    className="px-2.5 py-1 text-[11px] font-semibold text-slate-600 bg-white border border-slate-200 rounded hover:bg-slate-100 flex items-center gap-1"
+                  >
+                    <RefreshCw className="w-3 h-3" />
+                    Regenerar
+                  </button>
+                </div>
               </div>
 
               {/* Criterios y Permisos Checkboxes */}

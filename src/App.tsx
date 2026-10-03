@@ -28,7 +28,7 @@ import { CheckCircle2, AlertTriangle, Info, XCircle, X } from 'lucide-react';
 
 const MainLayout: React.FC = () => {
   const { activeTab, toasts, dismissToast } = useHR();
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(window.innerWidth < 768);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   if (!isAuthenticated) {
@@ -81,7 +81,17 @@ const MainLayout: React.FC = () => {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Navigation Sidebar */}
-        <Sidebar collapsed={sidebarCollapsed} setCollapsed={setSidebarCollapsed} />
+        <div className={`fixed inset-y-0 left-0 z-40 transform transition-transform duration-200 ease-in-out md:static md:transform-none ${sidebarCollapsed ? '-translate-x-full' : 'translate-x-0'}`}>
+          <Sidebar collapsed={sidebarCollapsed} setCollapsed={setSidebarCollapsed} />
+        </div>
+        
+        {/* Overlay for mobile when sidebar is open */}
+        {!sidebarCollapsed && (
+          <div 
+            className="fixed inset-0 bg-black/50 z-30 md:hidden" 
+            onClick={() => setSidebarCollapsed(true)}
+          />
+        )}
 
         {/* Main Content Area */}
         <main className="flex-1 p-6 md:p-8 overflow-y-auto max-w-7xl mx-auto w-full">
