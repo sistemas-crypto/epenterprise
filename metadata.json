@@ -1,0 +1,6 @@
+{
+  "name": "TalentoBuk HR - Gestión de Talento y Nómina",
+  "description": "Plataforma integral de talento humano, nómina, control de asistencia, vacaciones y portal del trabajador de EP Enterprise.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
